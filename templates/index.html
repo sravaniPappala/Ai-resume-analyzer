@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Resume Analyzer</title>
+<style>
+body {
+    font-family: 'Segoe UI';
+    background: linear-gradient(135deg,#1e3c72,#2a5298);
+    margin:0;
+    padding:0;
+}
+.container {
+    width:70%;
+    margin:40px auto;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.3);
+}
+h2 {
+    text-align:center;
+}
+textarea, input[type="file"] {
+    width:100%;
+    margin:10px 0;
+    padding:10px;
+    border-radius:8px;
+    border:1px solid #ccc;
+}
+button {
+    width:100%;
+    padding:12px;
+    background:#2a5298;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+}
+button:hover {
+    background:#1e3c72;
+}
+.progress {
+    background:#ddd;
+    border-radius:10px;
+    overflow:hidden;
+    margin-top:20px;
+}
+.progress-bar {
+    height:20px;
+    text-align:center;
+    color:white;
+    line-height:20px;
+}
+.skill-box {
+    display:inline-block;
+    padding:5px 10px;
+    margin:5px;
+    border-radius:5px;
+}
+.found { background:#d4edda; color:#155724; }
+.missing { background:#f8d7da; color:#721c24; }
+.keyword { background:#e2e3e5; color:#333; }
+</style>
+</head>
+
+<body>
+<div class="container">
+<h2>🚀 AI Resume Analyzer</h2>
+
+<form method="POST" enctype="multipart/form-data">
+
+<label>Upload Resume (PDF):</label>
+<input type="file" name="resume_file">
+
+<label>OR Paste Resume:</label>
+<textarea name="resume"></textarea>
+
+<label>Paste Job Description:</label>
+<textarea name="job_desc" required></textarea>
+
+<button type="submit">Analyze Resume</button>
+
+</form>
+
+{% if score is not none %}
+
+<h3>Match Score</h3>
+<div class="progress">
+<div class="progress-bar" style="width:{{score}}%; background:
+{% if score > 75 %}green
+{% elif score > 45 %}orange
+{% else %}red
+{% endif %}">
+{{score}}%
+</div>
+</div>
+
+<h3>Skills Found</h3>
+{% for skill in resume_skills %}
+<span class="skill-box found">{{skill}}</span>
+{% endfor %}
+
+<h3>Missing Skills</h3>
+{% for skill in missing_skills %}
+<span class="skill-box missing">{{skill}}</span>
+{% endfor %}
+
+<h3>Top Matching Keywords</h3>
+{% for word in top_keywords %}
+<span class="skill-box keyword">{{word}}</span>
+{% endfor %}
+
+{% endif %}
+
+</div>
+</body>
+</html>
