@@ -25,8 +25,6 @@ A Full-Stack AI-powered Resume Screening Web Application built using Flask and S
 
 ---
 
-## 📂 Project Structure
-
 # 🚀 AI Resume Analyzer
 
 A Full-Stack AI-powered Resume Screening Web Application built using Flask and Scikit-learn.
