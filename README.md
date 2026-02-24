@@ -56,10 +56,15 @@ A Full-Stack AI-powered Resume Screening Web Application built using Flask and S
 
 ## 📂 Project Structure
 
+
+```bash
 resume_screening/
-│
 ├── app.py
 ├── requirements.txt
-├── README.md
+├── static/
+│   └── style.css
 ├── templates/
-│ └── index.html
+│   ├── index.html
+│   └── result.html
+└── uploads/
+```
